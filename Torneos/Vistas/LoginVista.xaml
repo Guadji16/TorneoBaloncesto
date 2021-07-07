@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Torneos.LoginVista">
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <Grid RowSpacing="18">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <!---->
+                    <RowDefinition Height="Auto"/>
+                    <!--1-->
+                    <RowDefinition Height="Auto"/>
+                    <!--2-->
+                    <RowDefinition Height="Auto"/>
+                    <!--3-->
+                    <RowDefinition Height="Auto"/>
+                    <!--4-->
+                    <RowDefinition Height="Auto"/>
+                    <!--5-->
+                    <RowDefinition Height="Auto"/>
+                    <!--6-->
+                    <RowDefinition Height="Auto"/>
+                    <!--8-->
+
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <StackLayout Grid.Row="2" HorizontalOptions="Center" Orientation="Vertical" Margin="0,0,0,10">
+                    <Label
+                         Text="Inicio de sesión"
+                         FontAttributes="Bold"
+                         HorizontalOptions="Center"
+                         FontSize="26"
+                         Margin="0,0,0,5"
+                         WidthRequest="300"
+                         TextColor="Black"
+                         />
+                    
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical"  >
+                    <Label
+                    Text="Correo electrónico"
+                    FontSize="13"
+                    TextColor="Black"
+                    />
+                    <Frame
+                    HasShadow="True"
+                    Padding="8"
+                    CornerRadius="7"
+                    >
+                        <Entry
+                    Placeholder="eliel_guichito@gmail.com"
+                    Keyboard="Email"
+                    MaxLength="25"
+                    Text="{Binding txtCorreo, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    FontSize="15"
+                    />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="4" HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0">
+                        <Label
+                    Text="Contraseña"
+                    FontSize="13"
+                    TextColor="Black"
+                     VerticalOptions="Center"
+                     WidthRequest="150"
+                    />
+                       
+                    </StackLayout>
+                    <Frame
+                     HasShadow="True"
+                     Padding="8"
+                     CornerRadius="7"
+                     >
+
+                        <Entry
+                    Placeholder="******************"
+                    MaxLength="25"
+                    IsPassword="True"
+                    FontSize="15"
+                    Text="{Binding txtPass, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    
+                    />
+
+                    </Frame>
+
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="5" HorizontalOptions="Center" Padding="0">
+                    <ActivityIndicator
+                       IsRunning="{Binding IsRunningTxt}"
+                       IsVisible="{Binding IsVisibleTxt}"
+                       Color="Black"
+                       Scale="0.8"
+                     
+                       />
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="6" HorizontalOptions="Center" Orientation="Vertical" >
+                    <Button
+                     Text="Iniciar sesión"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="15"
+                            BackgroundColor="#fcfcfc"
+                            BorderColor="#f2f2f2"
+                            BorderWidth="1.5"
+                            WidthRequest="300"
+                            HeightRequest="50"
+                            Command="{Binding ComandoEntrar}"
+                            IsEnabled="{Binding IsEnabledTxt}" 
+                    />
+                    <Button
+                            Text="Crear cuenta"
+                            TextColor="Black"
+                            FontSize="15"
+                            BackgroundColor="White"
+                            IsEnabled="{Binding IsEnabledTxt}"  
+                            Clicked="SignUp_Clicked"
+                            />
+
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+
+</ContentPage>

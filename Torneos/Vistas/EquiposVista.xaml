@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Torneos.Vistas.EquiposVista"
+             Title="Administrar equipos">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Padding="15,12" BackgroundColor="White">
+                    <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                        <Label
+                            Text="Nombre:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                        <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                            <Entry
+                                Placeholder="Ingresa el nombre del equipo"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtNombre, Mode=TwoWay}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                        <Label
+                            Text="Jugadores:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                        <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                            <Entry
+                                Placeholder="Ingresa el número de jugadores"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtNJugadores, Mode=TwoWay}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                        <Label
+                            Text="Categoria:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                        <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                            <Picker Title="Selecciona una categoria"
+                                TitleColor="Gray"
+                                SelectedItem="{Binding CategoriaSeleccionada}"> 
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Masculino</x:String>
+                                        <x:String>Femenino</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                        <Label
+                            Text="Tipo:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                        <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                            <Picker Title="Selecciona una categoria"
+                                TitleColor="Gray"
+                                SelectedItem="{Binding TipoSeleccionado}"
+                                >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Infantil</x:String>
+                                        <x:String>Juvenil</x:String>
+                                        <x:String>Adultos</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                        <Label
+                            Text="Localidad:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                        <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                            <Entry
+                                Placeholder="Ingresa la localidad de procedencia"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtLocalidad, Mode=TwoWay}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,10" >
+                        <Button
+                            Text="Cancelar"
+                            FontSize="{OnPlatform Android=13,iOS=12}"
+                            BackgroundColor="Orange"
+                            TextColor="White"
+                            Command="{Binding CancelarComando}"/>
+                        <Button
+                            Text="Guardar"
+                            FontSize="{OnPlatform Android=13,iOS=12}"
+                            BackgroundColor="DarkGreen"
+                            TextColor="White"
+                            Command="{Binding GuardarComando}"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="1" Padding="15,12">
+                    <CollectionView
+                        ItemsSource="{Binding EquipoColeccion}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding EquipoSeleccionado}"
+                        SelectionChangedCommand="{Binding EquipoSeleccionadoComando}"
+                        SelectionChanged="EquipoColeccion_ItemSelect"
+                        Margin="10">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10,10" BackgroundColor="White">
+                                    <xct:Expander >
+                                        <xct:Expander.Header>
+                                            <Label Text="{Binding nombre}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                        </xct:Expander.Header>
+
+                                        <Grid Padding="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackLayout Grid.Row="0" Orientation="Vertical" Margin="0,10" >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Nombre del equipo:" TextColor="Black" Opacity="0.5" FontSize="12" Margin="5,0"/>
+                                                    <Label Text="{Binding nombre}"  TextColor="#2F3246" FontSize="12" Margin="5,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Número de jugadores:" TextColor="Black" Opacity="0.5" FontSize="12" Margin="5,0"/>
+                                                    <Label Text="{Binding nJugadores}"  TextColor="#2F3246" FontSize="12" Margin="5,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Tipo de equipo:" TextColor="Black" Opacity="0.5" FontSize="12" Margin="5,0"/>
+                                                    <Label Text="{Binding tipo}"  TextColor="#2F3246" FontSize="12" Margin="5,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Categoría:" TextColor="Black" Opacity="0.5" FontSize="12" Margin="5,0"/>
+                                                    <Label Text="{Binding categoria}"  TextColor="#2F3246" FontSize="12" Margin="5,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Localidad:" TextColor="Black" Opacity="0.5" FontSize="12" Margin="5,0"/>
+                                                    <Label Text="{Binding localidad}"  TextColor="#2F3246" FontSize="12" Margin="5,0"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </xct:Expander>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <StackLayout>
+                                <Label 
+                                   Text="No hay items que mostrar"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

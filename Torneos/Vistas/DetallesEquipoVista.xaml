@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Torneos.Vistas.DetallesEquipoVista"
+             Title="Detalles equipo">
+    <ContentPage.Content>
+
+        <StackLayout  Padding="15,12" BackgroundColor="White">
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Label
+                            Text="{Binding IDEquipo, StringFormat='Id de Equipo: {0}'}"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Label
+                            Text="Nombre:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Entry
+                                Placeholder="Ingresa el nombre del equipo"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtNombre, Mode=TwoWay}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Label
+                            Text="Jugadores:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Entry
+                                Placeholder="Ingresa el número de jugadores"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtNJugadores, Mode=TwoWay}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Label
+                            Text="Categoria:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Picker Title="Selecciona una categoria"
+                                TitleColor="Gray"
+                                SelectedItem="{Binding CategoriaSeleccionada}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Masculino</x:String>
+                                    <x:String>Femenino</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Label
+                            Text="Tipo:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Picker Title="Selecciona una categoria"
+                                TitleColor="Gray"
+                                SelectedItem="{Binding TipoSeleccionado}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Infantil</x:String>
+                                    <x:String>Juvenil</x:String>
+                                    <x:String>Adultos</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" >
+                    <Label
+                            Text="Localidad:"
+                            FontSize="13"
+                            TextColor="Black"/>
+                    <Frame
+                            HasShadow="{OnPlatform Android=true,iOS=false}"
+                            Padding="{OnPlatform Android=6,iOS=0}"
+                            CornerRadius="{OnPlatform Android=7}">
+                        <Entry
+                                Placeholder="Ingresa la localidad de procedencia"
+                                MaxLength="25"
+                                FontSize="{OnPlatform Android=15,iOS=16}"
+                                Text="{Binding TxtLocalidad, Mode=TwoWay}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,10" >
+                    <Button
+                            Text="Eliminar"
+                            FontSize="{OnPlatform Android=13,iOS=12}"
+                            BackgroundColor="DarkRed"
+                            TextColor="White"
+                            Command="{Binding EliminarComando}"/>
+                    <Button
+                            Text="Guardar"
+                            FontSize="{OnPlatform Android=13,iOS=12}"
+                            BackgroundColor="DarkGreen"
+                            TextColor="White"
+                            Command="{Binding ActualizarComando}"/>
+                </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

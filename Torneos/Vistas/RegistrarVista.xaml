@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Torneos.Vistas.RegistrarVista">
+    <ContentPage.Content>
+        <Grid RowSpacing="20" Margin="0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="1">
+                <Image
+                    Source="usuario.png"
+                    HeightRequest="130"
+                    WidthRequest="0"
+                    />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,20">
+                <Label
+                    Text="Registrarse"
+                    HorizontalTextAlignment="Center"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="20"
+                            WidthRequest="300"
+                    />
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical"  >
+                <Label
+                    Text="Correo electrónico"
+                    FontSize="13"
+                    TextColor="Black"
+                    />
+                <Frame
+                    HasShadow="True"
+                    Padding="6"
+                    CornerRadius="7"
+                    >
+                    <Entry
+                    Placeholder="BFortuna@gmail.com"
+                    Keyboard="Email"
+                    MaxLength="25"
+                    FontSize="15"
+                    Text="{Binding txtCorreo, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    />
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
+
+                <Label
+                    Text="Password"
+                    FontSize="13"
+                    TextColor="Black"
+                    />
+
+                <Frame
+                     HasShadow="True"
+                     Padding="6"
+                    CornerRadius="7"
+                     >
+
+                    <Entry
+                    Placeholder="******************"
+                    MaxLength="25"
+                    IsPassword="True"
+                    FontSize="15"
+                    Text="{Binding txtPass, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    />
+
+                </Frame>
+
+            </StackLayout>
+
+
+
+
+            <StackLayout Grid.Row="7" HorizontalOptions="Center">
+                <ActivityIndicator
+                       IsRunning="{Binding IsRunningTxt, Mode=TwoWay}"
+                       IsVisible="{Binding IsVisibleTxt, Mode=TwoWay}"
+                       Color="Black"
+
+                       />
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="8" HorizontalOptions="Center" Orientation="Vertical" >
+                <Button
+                     Text="Register"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="{OnPlatform Android=15}"
+                            BackgroundColor="#fcfcfc"
+                            BorderColor="#f2f2f2"
+                            BorderWidth="1.5"
+                            WidthRequest="300"
+                            HeightRequest="50"
+                            CornerRadius="7"
+                            Command="{Binding ComandoRegistrar}"
+                            IsEnabled="{Binding IsEnabledTxt, Mode=TwoWay}"
+                    />
+                <Button
+                            Text="Already have an acount? Log in"
+                            TextColor="Black"
+                            FontSize="12"
+                            BackgroundColor="White"
+                          
+                            />
+
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

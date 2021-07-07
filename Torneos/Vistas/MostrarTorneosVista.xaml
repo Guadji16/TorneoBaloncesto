@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Torneos.Vistas.MostrarTorneosVista"
+             Title="Torneos disponibles">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" WidthRequest="350" Orientation="Vertical" Margin="0,30"  >
+            <Label
+                    Text="Seleccione un torneo:"
+                    FontSize="15"
+                    TextColor="Black"
+                    />
+           
+
+            <StackLayout Padding="15,12" BackgroundColor="White">
+                <CollectionView
+                        ItemsSource="{Binding TorneoColeccion}"
+                        SelectionMode="Single"
+                        x:Name="coleccionDatos"
+                        SelectedItem="{Binding TorneoSeleccionado}"
+                        SelectionChanged="TorneoColeccion_ItemSelect"
+                        Margin="10">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10,10">
+                                <xct:Expander>
+                                    <xct:Expander.Header>
+                                        <Label Text="{Binding nombre}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                    </xct:Expander.Header>
+                                    <xct:Expander.ContentTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </xct:Expander.ContentTemplate>
+                                </xct:Expander>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <StackLayout>
+                            <Label 
+                                   Text="No hay items que mostrar"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
